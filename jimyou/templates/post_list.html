@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home Page{% endblock %}
+{% block header %}{% endblock %}
+{% block section %}
+<header></header>
+<style>
+    header {
+    width: 100%;
+    height: 70px;
+    background: #672e8d;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+  }
+</style>
+{% endblock %}
+{% block contents %}
+<section class="u-content-space-top">
+    <div class="container">
+      <h3>投稿一覧画面・いいねコメントが可能です</h3>
+      <table class="table">
+        <thead>
+        <tr>
+          <th nowrap>タイトル</th>
+          <th>人物</th>
+          <th>テキスト</th>
+          <th nowrap>いいね</th>
+          <th nowrap>コメント</th>
+        </tr>
+        </thead>
+      <tbody>
+    {% for Post in post_list %}
+      <tr>
+        <td>
+          {% if user.is_authenticated %}
+          <a href="{% url 'jimyou:good_detail' Post.pk%}">{{ Post.title }}</a></td>
+          {% else %}
+          <a>{{ Post.title }}</a>
+          {% endif %}
+        <td nowrap>
+          {% if user.is_authenticated %}
+          {{ Post.writer }}
+          {% else %}
+          <a>名無し</a>
+          {% endif %}
+        </td>
+        <td>{{ Post.text| truncatechars:15 }}</td>
+        
+        <td nowrap>
+          {% if user.is_authenticated %}
+          <a href="{% url 'jimyou:good_good' Post.pk%}">いいねする</i>
+          {% else %}
+          <a>いいね</a>
+          {% endif %}
+        </td>
+        <td nowrap>
+          {% if user.is_authenticated %}
+          <a href="{% url 'jimyou:good_comment' Post.pk%}">コメントする</a></td>
+          {% else %}
+          <a>コメント</a>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load extra_tags %}
+{% load extra_tags_day %}
+{% load extra_tags_month %}
+{% load user_list %}
+{% load user_profile %}
+{% block header %}
+{% endblock %}
+{% block section %}
+<header></header>
+<style>
+    header {
+    width: 100%;
+    height: 70px;
+    background: #672e8d;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+  }
+</style>
+
+{% endblock %}
+{% block contents %}
+<section class="u-content-space">
+  <div class="text-center">
+    <div class="container"> 
+    {% if user.is_authenticated %}
+        <h2 class="h1">{{user.username}}さん</h2>
+    <h2>投稿します</h2>
+    <p>個人情報などに気をつけてください。</p>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <table class="tabel">
+        <label>夢：目標の名前</label>
+        <div>{{ form.title }}{{ form.title.errors }}</div><br>
+        <label>夢：目標の説明</label>
+        <div>{{ form.text }}{{ form.text.errors }}</div>
+      </table>
+    <div class="text-center"><br>
+    <button class="btn btn-lg btn-primary py-3 px-4" type="submit">登録</button>
+    {% else %}
+      <h1>ログインすると機能が使えます</h1>
+      <a  class="btn btn-primary" href="{% url 'jimyou:index-account' %}">アカウント</a>
+    {% endif %}
+  </div>
+  </div>
+</section>
+{% endblock %}
+

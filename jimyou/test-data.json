@@ -1,0 +1,11 @@
+{
+    "model":"jimyou.Pro",
+    "fields":{
+        "user": "test_1_last",
+        "gender": "test_1_first",
+        "birthday":"2000-01-01",
+        "location":"test11",
+        "favorite_words":"test111"
+    }
+            
+}

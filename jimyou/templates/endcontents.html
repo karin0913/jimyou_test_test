@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block section %}
+<section class="js-parallax u-promo-block u-promo-block--mheight-500 u-overlay u-overlay--dark text-white" style="background-image: url(../../static/assets/img-temp/1920x1080/img13.png);">
+    <div class="container u-overlay__inner u-ver-center u-content-space">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="text-center">
+            <h1 class="display-sm-4 display-lg-3">デジタル終活</h1>
+            <p class="h6 text-uppercase u-letter-spacing-sm mb-0">life to walk</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+{% block contents %}
+<section class="u-content-space-top">
+    <div class="container"> 
+      {% if item_post %}
+      <form method="POST">{% csrf_token %}
+        {{ form }}
+        <button type="submit">送信</button>
+      </form>
+      {% else %}
+      {% endif %}
+      
+    </div>
+</section>
+{% endblock %}

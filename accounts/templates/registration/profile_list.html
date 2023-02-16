@@ -1,0 +1,18 @@
+{% extends 'registration/base.html' %}
+{% load static %}
+
+{% block header %}{% endblock %}
+{% block contents %}
+<!-- <p>aaa</p>
+<p>{{ title }}</p>
+{% for day in profile_list %}
+<tr>
+    <td><a href="{% url 'diary:detail'%}">{{ day.title }}</a></td>
+    <td>{{ day.date }}</td>
+    <td><a href="{% url 'diary:update' day.pk %}">更新</a></td>
+    <td><a href="{% url 'diary:delete' day.pk %}">削除</a></td>
+</tr> -->
+{% endfor %}
+{% endblock %}
+
+<!-- https://www.techpit.jp/courses/65/curriculums/68/sections/551/parts/1898 -->

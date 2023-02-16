@@ -1,0 +1,64 @@
+{% extends 'jimyou/base.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock %}
+{% block section %}
+<header></header>
+<style>
+    header {
+    width: 100%;
+    height: 70px;
+    background: #672e8d;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+  }
+</style>
+{% endblock %}
+
+{% block contents %}
+<style>
+    div.big {
+        transform: scale(2.0);
+    }
+    </style>
+<section class="u-content-space">
+    <div class="container">
+      <table class="table">
+        <form action="" method="POST">
+            <table class="table">
+                <tr>
+                    <th>タイトル</th>
+                    <td>{{ profile.title }}</td>
+                </tr>
+                <tr>
+                    <th>目標達成日</th>
+                    <td>{{ profile.limit}}</td>
+                </tr>
+                <tr>
+                    <th>文字列</th>
+                    <td>{{ profile.text }}</td>
+                </tr>
+            </table>
+            <p>こちらのデータを削除しますか？</p>
+            <div class="text-center" >
+                <a href="{% url 'jimyou:services'%}" class="btn btn-primary">戻る</a>
+                <button type="submit" class="btn btn-primary">削除</button>
+            </div>
+            {% csrf_token %}
+        </form>
+        <div class="text-center">
+            <br>
+            
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<!-- https://www.techpit.jp/courses/65/curriculums/68/sections/551/parts/1898 -->

@@ -1,0 +1,16 @@
+{% extends 'registration/base.html' %}
+{% load static %}
+
+{% block header %}{% endblock %}
+{% block contents %}
+  <form method="POST" action="{% url 'update_account' %}">
+    {% csrf_token %}
+    <div>
+        {% for email in form %}
+        <label for="{{ email.id_for_label }}">{{ email.label }}</label>
+        <p>{{ form.email }}{{ form.email.errors }}</p>
+        {% endfor %}
+    </div>
+    <button type = "submit">更新</button>
+  </form>
+{% endblock %}

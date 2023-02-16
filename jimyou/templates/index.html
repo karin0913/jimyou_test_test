@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load extra_tags %}
+{% load extra_tags_day %}
+{% load extra_tags_month %}
+{% block title %}Home Page{% endblock %}
+{% block header %}{% endblock %}
+{% block section %}
+<section class="js-parallax u-promo-block u-promo-block--mheight-500 u-overlay u-overlay--dark text-white" style="background-image: url(../../static/assets/img-temp/1920x1080/img16.png);">
+  <div class="container u-overlay__inner u-ver-center u-content-space">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="text-center">
+          {% if user.is_authenticated %}
+          <h3>残りの日数</h3>
+          <h1 class="display-sm-4 display-lg-3">{% time_stamping user.birthday user.gender user.country %}年{% time_stamping_month user.birthday user.gender user.country %}月{% time_stamping_day user.birthday user.gender user.country %}日</h1>
+          {% else %}
+          <h2><p>誕生日を基に平均寿命までの日数を表示します</p></h2>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block contents %}
+<section class="bg-light u-content-space">
+  <div class="container">
+    <!-- <header class="text-center w-md-50 mx-auto mb-8">
+      <h2 class="h1">Features</h2>
+      <p class="h5">We help everyone achieve their dreams and goals</p>
+    </header> -->
+
+    <!-- Feature Blocks -->
+    <div class="row">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="display-4 text-primary mb-2">
+          <i class="fab fa-grav"></i>
+        </div>
+        <a h4 class="h5" href="{% url 'create_account' %}">Account create</h4>
+        <p>アカウントを作成します</p>
+      </div>
+
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="display-4 text-primary mb-2">
+          <i class="fab fa-connectdevelop"></i>
+        </div>
+        <a h4 class="h5" href="{% url 'jimyou:index-account' %}">Account login</h4>
+        <p>アカウントにログインします</p>
+      </div>
+      <hr class="my-8">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="display-4 text-primary mb-2">
+          <i class="fas fa-cubes"></i>
+        </div>
+        <a h4 class="h5" href="{% url 'jimyou:services' %}">dream create</h4>
+        <p>夢・目標の登録をします</p>
+      </div>
+    </div>
+    <!-- End Feature Blocks -->
+
+    
+
+    <!-- Feature Blocks -->
+    <div class="row">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="display-4 text-primary mb-2">
+          <i class="fab fa-vuejs"></i>
+        </div>
+        <a h4 class="h5" href="{% url 'jimyou:contacts' %}">dream list</h4>
+        <p>夢・目標の一覧を表示します</p>
+      </div>
+
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="display-4 text-primary mb-2">
+          <i class="fab fa-react"></i>
+        </div>
+        <a h4 class="h5" href="{% url 'jimyou:post_input' %}">contribution</h4>
+        <p>夢・目標を投稿します</p>
+      </div>
+
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="display-4 text-primary mb-2">
+          <i class="fab fa-angular"></i>
+        </div>
+        <a h4 class="h5" href="{% url 'jimyou:post_input' %}">graph</h4>
+        <p>夢・目標の達成率を表示します
+        </p>
+      </div>
+    </div>
+    <!-- End Feature Blocks -->
+  </div>
+</section>
+{% endblock %}
+{% block footer%}{% endblock %}

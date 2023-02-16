@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+{% endblock %}
+{% block section %}
+<header></header>
+<style>
+    header {
+    width: 100%;
+    height: 70px;
+    background: #672e8d;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+  }
+</style>
+
+{% endblock %}
+{% block contents %}
+{% if user.is_authenticated %}
+<section class="u-content-space">
+  <div class="container"><br>
+    <table class="table">
+      <tr>
+          <th>タイトル</th>
+          <td>{{ good_list.title }}</td>
+      </tr>
+      <tr>
+          <th>目標達成日</th>
+          <td>{{ good_list.text }}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="text-center">
+    <a href="{% url 'jimyou:good_good' good_list.pk%}"><button class="btn btn-lg btn-primary py-3 px-4">いいね</button></a>
+    <a href="{% url 'jimyou:good_comment' good_list.pk%}"><button class="btn btn-lg btn-primary py-3 px-4">コメント</button></a>
+  </div>  
+</section>
+{% endif %}
+{% endblock %}
+

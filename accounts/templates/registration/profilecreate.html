@@ -1,0 +1,20 @@
+{% extends 'registration/base.html' %}
+{% load static %}
+
+{% block header %}{% endblock %}
+{% block contents %}
+<form method="POST" action="{% url 'create_profile' %}">
+    {% csrf_token %}
+    <label>ユーザーID</label>
+    <div>{{ form.user }}{{ form.user.errors }}</div>
+    <label>夢：目標達成日</label>
+    <div>{{ form.limit }}{{ form.limit.errors }}</div>
+    <label>夢：目標の名前</label>
+    <div>{{ form.title }}{{ form.title.errors }}</div>
+    <label>夢：目標の説明</label>
+    <div>{{ form.text }}{{ form.text.errors }}</div>
+    <button type = "submit">登録</button>
+</form>
+{% endblock %}
+
+<!-- https://www.techpit.jp/courses/65/curriculums/68/sections/551/parts/1898 -->

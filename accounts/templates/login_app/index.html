@@ -1,0 +1,22 @@
+{% extends 'login_app/base.html' %}
+{% load static %}
+
+{% block header %}{% endblock %}
+{% block contents %}
+    {% if user.id  %}
+    <p>ログインユーザー：{{user.username}}</p><br>
+    <p>ログインしました。</p>
+    <p></p>
+    <p>{{ user.birthday}}</p>
+    <p>{{ user.birthday | date:'Ymd' }}</p>
+    <p>{{ birthday }}</p>
+    <a href="{% url 'update_account' %}">情報更新</a>
+    <a href="{% url 'logout' %}">ログアウト</a>
+    <a href="{% url 'create_profile' %}">profile作成</a>
+    <a href="{% url 'profile_index' %}">profilelist</a>
+    {% else %}
+    <a href="{% url 'login' %}">ログイン</a>
+    <a href="{% url 'create_account' %}">アカウント作成</a>
+    </form>
+    {% endif %}
+{% endblock %}

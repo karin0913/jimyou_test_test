@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load extra_tags %}
+{% load extra_tags_day %}
+{% load extra_tags_month %}
+{% load user_list %}
+{% load user_profile %}
+{% block header %}
+{% endblock %}
+{% block section %}
+<header></header>
+<style>
+    header {
+    width: 100%;
+    height: 70px;
+    background: #672e8d;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+  }
+</style>
+
+{% endblock %}
+{% block contents %}
+{% if user.is_authenticated %}
+<section class="u-content-space-top">
+  <div class="container"><h1>コメントを投稿</h1><p>※個人情報などご確認ください。</p>
+    <table class="table">
+      <tr><th nowrap>ユーザー</th><td>{{ post.writer }}</td></tr>
+      <tr><th nowrap>タイトル</th><td>{{ post.title }}</td></tr>
+      <tr><th nowrap>テキスト</th><td>{{ post.text }}</td></tr>
+      <br>
+    </table>
+    <br>
+    {% for post_list in post_list %}
+      {% if user.is_authenticated %}
+          <h6>{{ post_list.writer }}さん</h6>
+          {% else %}
+          <h6>名無しさん</h6>
+          {% endif %}
+      <p>&nbsp;&nbsp;&nbsp;:{{ post_list.text }}</p>
+    {% endfor %}
+    <form action="" method="POST">{% csrf_token %}
+      <tr>
+        <th>コメントを入力</th>
+        <td>{{ form.text }}</td>
+      </tr>
+      <br>
+      <div class="text-center" ><button type="submit" class="btn btn-primary">コメントを投稿</button><br>
+    </form>
+    <div class="text-center"><br><a href="{% url 'jimyou:post_list'%}">戻る</button></a></div><br>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
+<!-- <section class="u-content-space-top">
+  <div class="container"> 
+      <h1>コメントを投稿</h1>
+      <p>※個人情報などご確認ください。</p>
+
+          <table class="table">
+            <tr>
+              <th>ユーザー</th>
+              <td>{{ post.writer }}</td>
+          </tr>
+            <tr>
+                <th>タイトル</th>
+                <td>{{ post.title }}</td>
+            </tr>
+            <tr>
+                <th>テキスト</th>
+                <td>{{ post.text }}</td>
+            </tr>
+            <br>
+            <tr>{% for post_list in post_list %}
+              {{ post_list.writer }}
+              {{ post_list.text }}
+              {% endfor %}</tr>
+              <form action="" method="POST">
+                {% csrf_token %}
+            <tr>
+              <th>コメントを入力</th>
+              <td>{{ form.text }}</td>
+            </tr>
+          </table>
+          <br>
+          
+          <div class="text-center" ><button type="submit" class="btn btn-primary">コメントを投稿</button>
+      </form>
+      <div class="text-center">
+          <br>
+          <a href="{% url 'jimyou:services'%}">戻る</button></a>
+      </div>
+  </div>
+</section> -->
+

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}{% endblock %}
+{% block section %}
+      <section class="js-parallax u-promo-block u-promo-block--mheight-500 u-overlay u-overlay--dark text-white" style="background-image: url(../../static/assets/img-temp/1920x1080/img12.jpg);">
+        <!-- Promo Content -->
+        <div class="container u-overlay__inner u-ver-center u-content-space">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="text-center">
+                <h1 class="display-sm-4 display-lg-3">目標登録画面</h1>
+                <p class="h6 text-uppercase u-letter-spacing-sm mb-0">テスト</p>
+
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- End Promo Content -->
+      </section>
+      <!-- End Promo Block -->
+    </header><main role="main">
+      <!-- Free Quote -->
+      <section class="border-bottom py-3">
+        <div class="container text-center">
+          <p class="mb-0"><a href="{% url 'jimyou:services' %}">目標の一覧</a></p>
+        </div>
+      </section>
+    </main>
+    <!-- End Header -->
+    {% endblock %}
+    {% block contents %}
+      <!-- Contact Form -->
+      <section class="u-content-space">
+        <div class="container">
+          <header class="text-center w-md-50 mx-auto mb-8">
+            {% if user.is_authenticated %}
+            <h2 class="h1">{{user.username}}さん</h2>
+            {% else %}
+            <h4><p>会員登録またはログインすると使用できます</p></h4>
+            {% endif %}
+          </header>
+          <form action="" method="POST">
+            {% csrf_token %}
+            <table class="tabel">
+                <!-- <label>ユーザー名</label>
+                <div class="col-lg-6 form-group mb-4">{{ form.user }}{{ form.user.errors }}</div> -->
+                <label>夢：目標の達成日   ※記入例 2000-01-01</label>
+                <div class="col-lg-6 form-group mb-4">{{ form.limit }}{{ form.limit.errors }}</div>
+                <label>夢：目標の名前</label>
+                <div class="col-lg-6 form-group mb-4">{{ form.title }}{{ form.title.errors }}</div>
+                <label>夢：目標の説明</label>
+                <div class="col-lg-12 form-group mb-6">{{ form.text }}{{ form.text.errors }}</div>
+            </table>
+            <div class="text-center">
+              {% if user.is_authenticated %}
+              <button class="btn btn-lg btn-primary py-3 px-4" type="submit">登録</button>
+              {% else %}
+              <h4><p></p></h4>
+              {% endif %}
+            </div>
+          </form>
+        </div>
+      </section>
+  {% endblock %}

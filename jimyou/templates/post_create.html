@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home Page{% endblock %}
+{% block header %}{% endblock %}
+{% block section %}
+<header></header>
+<style>
+    header {
+    width: 100%;
+    height: 70px;
+    background: #672e8d;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+  }
+</style>
+{% endblock %}
+{% block contents %}
+<section class="u-content-space-top">
+    <div class="container"> 
+        <h1>夢：目標を投稿</h1>
+        <p>※名前と説明の修正が可能です。個人情報などご確認ください。</p>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table class="tabel">
+            <label>夢：目標の名前</label>
+            <div>{{ form.title }}{{ form.title.errors }}</div>
+            <label>夢：目標の説明</label>
+            <div>{{ form.text }}{{ form.text.errors }}</div>
+            </table>
+            <br>
+            <div class="text-center" >
+                <a href="{% url 'jimyou:services'%}" class="btn btn-primary">戻る</a>
+                <button type="submit" class="btn btn-primary">投稿</button>
+            </form>
+
+
+    </div>
+</section>
+{% endblock %}
+{% block footer%}{% endblock %}

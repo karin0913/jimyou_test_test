@@ -1,0 +1,43 @@
+{% extends 'jimyou/base.html' %}
+{% load static %}
+
+{% block header %}{% endblock %}
+{% block section %}
+<section class="js-parallax u-promo-block u-promo-block--mheight-500 u-overlay u-overlay--dark text-white" style="background-image: url(../../static/assets/img-temp/1920x1080/2.png);">
+  <div class="container u-overlay__inner u-ver-center u-content-space">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="text-center">
+          <h1 class="display-sm-4 display-lg-3">L to W</h1>
+          <p class="h6 text-uppercase u-letter-spacing-sm mb-0">life to walk</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>{% endblock %}
+{% block contents %}
+<section class="u-content-space">
+  <div class="container">
+  <form method="POST" action="{% url 'create_account' %}">
+    {% csrf_token %}
+    <label>ユーザー名</label>
+    <div>{{ form.username }}</div>
+    <label>パスワード  ※大文字1文字以上かつ8文字以上</label>
+    <div>{{ form.password1 }}</div>
+    <label>パスワード(確認)</label>
+    <div>{{ form.password2 }}</div>
+    <label>生年-月-日  ※記入例 2000-01-01</label>
+    <div>{{ form.birthday }}</div>
+    <label>国籍</label>
+    <div>{{ form.country }}</div>
+    <label>性別</label>
+    <div>{{ form.gender }}</div>
+    <br>
+    <div class="text-center"><button class="btn btn-lg btn-primary py-3 px-4" type="submit">登録</button><br><br></div>
+    
+  </form>
+</div>
+</section>
+{% endblock %}
+
+<!-- https://www.techpit.jp/courses/65/curriculums/68/sections/551/parts/1898 -->
